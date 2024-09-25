@@ -1,0 +1,105 @@
+.players-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.instructions {
+  font-family: 'arcade-classic', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: center;
+  align-items: center;
+}
+
+@font-face {
+  font-family: 'arcade-classic';
+  src: url('/assets/fonts/ARCADECLASSIC.TTF');
+}
+
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 45%;
+  margin: 0 10px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+app-game-config,
+app-board {
+  margin-bottom: 20px;
+}
+
+app-board {
+  width: 100%;
+  max-width: 600px; /* Asegúrate de que no se extienda demasiado */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con mayor opacidad */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-modal {
+  display: flex;
+}
+
+.modal-content {
+  font-family: 'arcade-classic', sans-serif;
+  background: #ccc;
+  padding: 20px;
+  border: 2px solid #333;  /* Borde retro */
+  box-shadow: inset 3px 3px 0 0 rgba(255, 255, 255, 0.5),
+              inset -3px -3px 0 0 rgba(0, 0, 0, 0.5),
+              0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombras retro */
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  position: relative; /* Para que el botón se posicione dentro */
+}
+
+.close-btn {
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;  /* Cambiado para posicionar dentro del modal */
+  top: 10px;           /* Ahora se posiciona relativo al contenido */
+  right: 20px;         /* Alineado a la derecha dentro del modal */
+
+  &:hover, &:focus {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+.modal p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+

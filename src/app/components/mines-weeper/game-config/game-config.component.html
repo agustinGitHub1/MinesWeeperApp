@@ -1,0 +1,56 @@
+<div class="config">
+  <div *ngIf="!isPrincipalGameConfig" class="digital-clock">{{minasRestantes | number: '2.0'}}</div>
+  <button *ngIf="!isMultiplayerMode" id="juego-nuevo" (click)="startNewGame(isPrincipalGameConfig)">
+    <ng-container *ngIf="gameStatusFromBoard === 'lost'"> 😭 </ng-container>
+    <ng-container *ngIf="gameStatusFromBoard === 'won'"> 😎 </ng-container>
+    <ng-container *ngIf="gameStatusFromBoard === 'playing'"> 🙂 </ng-container>
+  </button>
+
+  <div *ngIf="!isPrincipalGameConfig" class="digital-clock">{{timerDisplay}}</div>
+
+  <button *ngIf="!isMultiplayerMode" id="Ajustes" (click)="toggleSettings()">Opciones</button>
+  <button *ngIf="!isMultiplayerMode && !isPrincipalGameConfig" id="Ajustes" (click)="goToMultiplayerMode()">Multijugador</button>
+  <button *ngIf="!isMultiplayerMode && isPrincipalGameConfig" id="Ajustes" (click)="goToOneplayerMode()">1 jugador</button>
+  <button *ngIf="!isMultiplayerMode && !isPrincipalGameConfig" id="Ajustes" (click)="goToScoresList()">Puntuaciones</button>
+  <div *ngIf="showSettings" class="settings-panel">
+    <h4 *ngIf="!isPrincipalGameConfig">Opciones del Tablero</h4>
+<div *ngIf="!isPrincipalGameConfig" class="board-options">
+    <div class="option">
+        <label for="filas">Filas:</label>
+        <input type="number" id="filas" [(ngModel)]="filas2" (change)="updateConfig()" min="1" max="30">
+    </div>
+    <div class="option">
+        <label for="columnas">Columnas:</label>
+        <input type="number" id="columnas" [(ngModel)]="columnas2" (change)="updateConfig()" min="1" max="30">
+    </div>
+    <div class="option">
+        <label for="minas">Minas:</label>
+        <input type="number" id="minas" [(ngModel)]="minas2" (change)="updateConfig()" min="0" [max]="100">
+    </div>
+</div>
+    <br>
+    <br>
+    <h4>Dificultad</h4>
+    <div *ngIf="!isPrincipalGameConfig" class="difficulty-buttons">
+      <button [ngClass]="{'selected': selectedDifficulty === 'easy'}" (click)="setDifficulty('easy')">Fácil</button>
+      <button [ngClass]="{'selected': selectedDifficulty === 'medium'}" (click)="setDifficulty('medium')">Medio</button>
+      <button [ngClass]="{'selected': selectedDifficulty === 'hard'}" (click)="setDifficulty('hard')">Difícil</button>
+    </div>
+
+    <div *ngIf="isPrincipalGameConfig"  class="difficulty-buttons">
+      <button [ngClass]="{'selected': selectedDifficulty === 'easy'}" (click)="setDifficulty('easy')">Fácil</button>
+      <button [ngClass]="{'selected': selectedDifficulty === 'medium'}" (click)="setDifficulty('medium')">Medio</button>
+      <button [ngClass]="{'selected': selectedDifficulty === 'hard'}" (click)="setDifficulty('hard')">Difícil</button>
+    </div>
+
+    <div *ngIf="!isPrincipalGameConfig">
+      <button (click)="saveGame()">Guardar Juego</button>
+      <button (click)="loadGame()">Cargar Juego</button>
+    </div>
+
+    <div class="action-buttons">
+      <button class="save-btn" (click)="saveSettings()">Aceptar</button>
+      <button class="cancel-btn" (click)="cancelSettings()">Cancelar</button>
+    </div>
+  </div>
+</div>

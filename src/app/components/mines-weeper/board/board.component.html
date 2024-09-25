@@ -1,0 +1,37 @@
+
+
+<div class="board-container" *ngIf="tablero.length > 0">
+  <table >
+   <tbody>
+     <tr *ngFor="let row of tablero; let c = index">
+       <td *ngFor="let cell of row; let f = index"
+       (click)="handleCellClick($event, c, f)"
+       (contextmenu)="handleCellClick($event, c, f); $event.preventDefault()"
+       [ngClass]="{
+         'descubierto': cell.estado === 'descubierto',
+         'perdido': cell.estado === 'perdido',
+         'bomba': cell.estado === 'bomba',
+         'bomba-marcada': cell.estado === 'bomba-marcada',
+         'marcado': cell.estado === 'marcado',
+         'victoria': cell.estado === 'victoria',
+         'bomba-victoria': cell.estado === 'bomba-victoria',
+         'descubierto-victoria': cell.estado === 'descubierto-victoria',
+         'cell': true
+       }">
+     <ng-container *ngIf="cell?.estado === 'descubierto' || cell?.estado === 'bomba' || cell?.estado === 'descubierto-victoria'">
+       {{ cell.valor > 0 ? cell.valor : (cell.valor === -1 ? '💣' : '') }}
+     </ng-container>
+     <ng-container *ngIf="cell?.estado === 'bomba-marcada' || cell?.estado === 'bomba-victoria'">
+       💣
+     </ng-container>
+     <ng-container *ngIf="cell?.estado === 'marcado'">
+       🚩
+     </ng-container>
+     <ng-container *ngIf="cell?.estado === 'perdido'">
+       💥
+     </ng-container>
+   </td>
+     </tr>
+   </tbody>
+  </table>
+</div>

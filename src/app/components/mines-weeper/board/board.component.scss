@@ -1,0 +1,179 @@
+.board-container {
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 80vh;
+  overflow: auto;
+  margin: 0 auto;
+  border: 2px solid #333; /* Borde retro */
+  box-shadow: inset 3px 3px 0 0 rgba(255, 255, 255, 0.5),
+              inset -3px -3px 0 0 rgba(0, 0, 0, 0.5);
+  padding: 3px;
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+* {
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  font-family: Calibri, sans-serif;
+  background: lightsteelblue;
+  margin: 0;
+  padding: 20px;
+}
+
+// table {
+//   margin: 0;
+//   background: slategray;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+//   table-layout: fixed;
+//   overflow: auto;
+// }
+
+table {
+  border-collapse: collapse; /* Evitar espacios entre celdas */
+  table-layout: fixed; /* Mantener celdas del mismo tamaño */
+  width: auto; /* Ajustar el ancho automáticamente */
+  height: auto; /* Ajustar la altura automáticamente */
+}
+
+td {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 120%;
+  color: white;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: darkgray;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-width: 30px;
+  min-height: 30px;
+  box-shadow: inset 3px 3px 0 0 rgba(255, 255, 255, 0.5),
+  inset -3px -3px 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.board-container table {
+  width: max-content;
+}
+
+.board-container table {
+  width: auto; /* Permitir que la tabla ajuste su ancho automáticamente */
+}
+
+.board-container tr {
+  display: table; /* Asegurarse de que las filas se comporten correctamente */
+  width: 100%; /* Establecer el ancho de las filas al 100% */
+}
+
+td.perdido {
+  background: darkred;
+  color: transparent;
+}
+
+
+td.bomba-marcada {
+  background: grey;
+  color: black;
+}
+
+td.descubierto {
+  background: grey;
+  box-shadow: none;
+}
+
+td.descubierto.perdido {
+  background: red;
+  color: white;
+}
+
+td.bomba-victoria {
+  background: darkgreen;
+  color: black;
+}
+
+td.descubierto-victoria {
+  background: lightgreen;
+  color: white;
+  box-shadow: none;
+}
+
+td.victoria {
+  background: darkgreen;
+  color: transparent;
+}
+
+
+td.bomba {
+  background: darkred;
+  color: black;
+}
+
+
+td.marcado {
+  background: grey;
+  color: white;
+}
+
+
+td:hover {
+  background: darkgrey;
+  box-shadow: inset 0px 6px 6px rgba(255, 255, 255, 0.4),
+              0px -6px 8px rgba(0, 0, 0, 1);
+  transform: translateY(-2px);
+}
+
+td:active {
+  transform: translateY(2px);
+  box-shadow: inset 0px 3px 3px rgba(255, 255, 255, 0.2),
+              0px -3px 5px rgba(0, 0, 0, 0.6);
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  background: skyblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: darkgray;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cell {
+  animation: scale 0.5s ease-in-out;
+  display: inline-block;
+}

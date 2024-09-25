@@ -1,0 +1,9 @@
+<div class="instructions">
+  <h1>Buscaminas</h1>
+  <p>Toca   el   boton   con   emoji   para   iniciar   o   configura   en   opciones   tus   parametros   de   juego</p>
+</div>
+<div class="game-container">
+  <app-game-config [filas2]="filas" [columnas2]="columnas" [minas2]="minas" (nuevoJuego)="iniciarNuevoJuegoPlayer1($event)" [minasRestantes]="minasRestantesNumber" [gameStatusFromBoard]="gameStatus"></app-game-config>
+  <app-board #tablero [filas2]="player1Config.filas" [columnas2]="player1Config.columnas" [minas2]="player1Config.minas" (minesLeft)="minasRestantes($event)" (gameStatus)="gameStatusEventReceiver($event)"></app-board>
+</div>
+

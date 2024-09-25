@@ -1,0 +1,27 @@
+<div class="ranking-panel">
+  <h1>Ranking de Jugadores</h1>
+  <table class="retro-table">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Difficulty</th>
+        <th>Total Time Spent</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ formatTime(game.startTime) }}</td>
+        <td>{{ formatTime(game.endTime) }}</td>
+        <td>{{ game.difficulty }}</td>
+        <td>{{ game.totalTimeSpent }}</td>
+        <td>{{ game.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button id="Ajustes" (click)="goToMultiplayerMode()">Multijugador</button>
+  <button id="Ajustes" (click)="goToOneplayerMode()">1 jugador</button>
+</div>
